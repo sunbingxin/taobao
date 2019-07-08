@@ -6,7 +6,7 @@
     <div class="topbar">
       <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
         <li>用户推荐</li>
-        <li v-for="(item,index) in tab" :key="index">{{item.cname}}</li>
+        <li v-for="(item,index) in tab" :key="index" @click="tabJump(item.cid)">{{item.cname}}</li>
       </scroll-view>
     </div>
     <div class="swiperTab">
@@ -17,17 +17,17 @@
        autoplay="true">
         <block v-for="(item,index) in Topimg" :key="index">
           <swiper-item>
-            <img :src="item.imgUrl" alt="" class="slide-image">
+            <img :src="item.imgUrl" alt="" class="slide-image" @click="imgJump(item.siid)">
           </swiper-item>
         </block>
       </swiper>
     </div>
     <div class="ThressImg">
       <div v-for="(item,index) in TLeft" :key="index" class="left"> 
-        <img :src="item.imgUrl" :style="{width:item.imgWidth / 2 + 'px','height':item.imgHeight / 2 + 'px'}">
+        <img :src="item.imgUrl" :style="{width:item.imgWidth / 2 + 'px','height':item.imgHeight / 2 + 'px'}" @click="imgJump(item.siid)">
       </div>
       <div class="right">
-        <img v-for="(item,index) in TRight" :key="index" :src="item.imgUrl" :style="{width:item.imgWidth / 2 + 'px','height':item.imgHeight / 2 + 'px'}">
+        <img v-for="(item,index) in TRight" :key="index" :src="item.imgUrl" :style="{width:item.imgWidth / 2 + 'px','height':item.imgHeight / 2 + 'px'}" @click="imgJump(item.siid)">
       </div>
     </div>
     <div class="content">
@@ -111,7 +111,13 @@ export default {
     }),
     ...mapMutations({
       pareId:'home/parenId'
-    })
+    }),
+    tabJump(cid){
+      wx.navigateTo('pages/tab/main?cid=' + cid)
+    },
+    imgJump(siid){
+      wx.navigateTo('pages/special/main?siid=' + siid)
+    }
   },
   onLoad(){
     this.tabList({
