@@ -64,6 +64,7 @@ export default {
      }
   },
   onLoad(option){
+    console.log(option)
     this.getList({siid: option.siid})
  },
   onPageScroll(e) {

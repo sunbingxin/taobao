@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/index/main",
     "pages/special/main",
     "pages/detail/main",
-    "pages/index/main",
-    "pages/my/main"
+    "pages/my/main",
+    "pages/tab/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -15,7 +16,7 @@
     "color": "#999",
     "backgroundColor": "#fafafa",
     "selectedColor": "#333",
-    "borderStyle": "white",
+    "borderStyle": "black",
 
     "list": [{
       "text": "首页",
