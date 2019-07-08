@@ -63,9 +63,9 @@ export default {
         });
      }
   },
-  onShow(){
-     this.getList({siid: 181})
-  },
+  onLoad(option){
+    this.getList({siid: option.siid})
+ },
   onPageScroll(e) {
    if(e.scrollTop>240){
      this.scrollIndex=true;
