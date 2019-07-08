@@ -1,8 +1,8 @@
 <template>
   <div class="warp">
       <scroll-view class="warp-top" scroll-x>
-        <li>今日推荐</li>
-        <li v-for="(item,key) in data" :key="key" @click="clickli(item.cid,item.childs)" :class="item.cid===id?'border':null">{{item.cname}}</li>
+        <li @click="clicknav">今日推荐</li>
+        <li v-for="(item,key) in tablist" :key="key" @click="clickli(item.cid,item.childs)" :class="item.cid===id?'border':null">{{item.cname}}</li>
       </scroll-view>
       <div class="warp-content">
         <div class="content-top">
@@ -21,7 +21,7 @@
             <div @click="clickarr('价格')">价格{{i === 0?'👆':'👇'}}</div>
           </div>
           <div class="bottom-bo">
-            <div class="shops" v-for="(item,index) in shops" :key="index">
+            <div class="shops" v-for="(item,index) in shopdata" :key="index">
               <div class="shops-img">
                 <img :src="item.mainImgUrl" alt="">
               </div>
@@ -46,11 +46,8 @@ export default {
   },
   data(){
     return {
-      data:[],
       id:1,
-      child:[],
       Index:1,
-      shops:[],
       i:0,
       sortType:1,
       open:true
@@ -61,22 +58,14 @@ export default {
   },
   onLoad(option){
     if(option.cid){
-      this.id = option.cid
+      this.id = option.cid*1
     }
   },
   onShow(){
-    this.tab()
+    this.tab(this.id)
     this.shop({cid:this.id,sortType:this.sortType,pageIndex:this.Index})
-    setTimeout(()=>{
-      this.data = this.tablist
-      this.shops = this.shopdata
-      this.tablist.forEach(item=>{
-        if(item.cid === this.id){
-          this.child = item.childs
-      }
-      })
-      console.log(this.data,this.child)
-    },1000)
+    console.log(this.id)
+    this.click(this.id)
   },
   components:{
  
@@ -85,23 +74,14 @@ export default {
   computed:{
     ...mapState({
       tablist:(state)=>{return state.tab.tablist},
-      shopdata:(state)=>{return state.tab.shopdata}
+      shopdata:(state)=>{return state.tab.shopdata},
+      child:(state)=>{return state.tab.child}
     })
   },
   onReachBottom(){
     ++this.Index
     if(this.open){
       this.shop({cid:this.id,sortType:this.sortType,pageIndex:this.Index})
-      setTimeout(()=>{
-        if(this.shopdata){
-          this.shopdata.forEach(item=>{
-            this.shops.push(item)
-          })
-        }else{
-          this.open = false
-        }
-        
-      },1000)
     }else{
       wx.showToast({
         title: '暂无数据!',
@@ -114,49 +94,33 @@ export default {
   methods:{
     ...mapActions({
        tab:'tab/tab',
-       shop:'tab/shop'
+       shop:'tab/shop',
+       click:'tab/click'
     }),
+    clicknav(){
+      wx.navigateTo({
+        url:'/pages/index/main'
+      })
+    },
     clickarr(obj){
       this.sortType = 1
       if(obj === '综合'){
-        this.shops = []
+        this.index = 1;
          this.shop({cid:this.id,sortType:this.sortType,pageIndex:this.Index})
-          setTimeout(()=>{
-            this.shopdata.forEach(item=>{
-              this.shops.push(item)
-            })
-          },1000)
       }else if(obj === '最新'){
         this.sortType = 2
-        this.shops = []
+        this.Index = 1;
          this.shop({cid:this.id,sortType:this.sortType,pageIndex:this.Index})
-          setTimeout(()=>{
-            this.shopdata.forEach(item=>{
-              this.shops.push(item)
-            })
-          },1000)
       }else{
         this.i = this.i
         if(this.i === 0){
           this.sortType = 4
           this.i = 1;
-          this.shops = []
          this.shop({cid:this.id,sortType:this.sortType,pageIndex:this.Index})
-          setTimeout(()=>{
-            this.shopdata.forEach(item=>{
-              this.shops.push(item)
-            })
-          },1000)
         }else{
           this.sortType = 3
           this.i = 0;
-          this.shops = []
-         this.shop({cid:this.id,sortType:this.sortType,pageIndex:this.Index})
-          setTimeout(()=>{
-            this.shopdata.forEach(item=>{
-              this.shops.push(item)
-            })
-          },1000)
+          this.shop({cid:this.id,sortType:this.sortType,pageIndex:this.Index})
         }
       }
     },
@@ -165,12 +129,7 @@ export default {
         this.id = cid
       }
       this.shop({cid:cid,sortType:1,pageIndex:this.Index})
-      setTimeout(()=>{this.shops = this.shopdata},1000)
-      this.tablist.forEach(item=>{
-        if(item.cid === this.id){
-          this.child = item.childs
-        }
-      })
+      this.click(cid)
     }
   }
 }
@@ -190,7 +149,6 @@ export default {
     width:100%;
     height:50px;
     line-height:50px;
-    display: flex;
     white-space: nowrap;
   }
   .bac{
