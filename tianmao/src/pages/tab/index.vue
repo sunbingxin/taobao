@@ -47,7 +47,7 @@ export default {
   data(){
     return {
       data:[],
-      id:122,
+      id:1,
       child:[],
       Index:1,
       shops:[],
@@ -58,6 +58,11 @@ export default {
   },
   created(){
      
+  },
+  onLoad(option){
+    if(option.cid){
+      this.id = option.cid
+    }
   },
   onShow(){
     this.tab()
@@ -72,7 +77,6 @@ export default {
       })
       console.log(this.data,this.child)
     },1000)
-    
   },
   components:{
  
@@ -195,8 +199,8 @@ export default {
     background:#f2f2f2;
   }
   .border{
-    border-bottom: 3px solid blue;
-    color:blue;
+    border-bottom: 10px solid skyblue;
+    color:skyblue;
   }
   .warp-top li{
     text-align: center;
@@ -231,6 +235,11 @@ export default {
     line-height: 30px;
     text-align: center;
     font-size: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
   }
   .content-bottom{
     width: 100%;
