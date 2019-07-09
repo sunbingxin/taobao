@@ -1,4 +1,4 @@
-import {getDetails,getDefaults,getImgs,getAlers,getSearchs} from "@/services"
+import {getDetails,getDefaults,getImgs,getAlers,getSearchs,getNeis} from "@/services"
 const state={ //原始数据
   getAll:{},
 };
@@ -19,6 +19,10 @@ const actions={ //异步改变
         //5.查询提示
         let getSearch=await getSearchs({pid:getDetail.result.pid,bid: getDetail.result.bid,uid: getDetail.result.uid,usiid: getDetail.result.usiid})
         commit("getAlls",{getDetail:getDetail.result,getDefault:getDefault.result,getImg:getImg.result,getAler:getAler.result,getSearch:getSearch.result})
+    },
+    async getNei({commit},payload){
+        let data=await getNeis(payload);
+        console.log(data);
     }
 };
 
