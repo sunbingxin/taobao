@@ -32,14 +32,14 @@
     </div>
     <div class="content">
       <div class="every" v-for="(item,index) in StoreImg" :key="index">
-        <img :src="item.pictUrl" alt="">
+        <img :src="item.pictUrl" alt="" @click="imgJump(item.jumpUrl)">
         <div class="tit">
           <span>精选好物|</span>
           <span>等你来抢</span>
           <span>更多></span>
         </div>
         <div class="con">
-          <div v-for="(citem,cindex) in item.children.items" :key="cindex" class="eve">
+          <div v-for="(citem,cindex) in item.children.items" :key="cindex" class="eve" @click="detJump(citem.jumpUrl)" >
             <img :src="citem.imgUrl" alt="">
             <p>{{citem.title}}</p>
             <span>￥{{citem.salesPrice}}</span>
@@ -113,19 +113,25 @@ export default {
       pareId:'home/parenId'
     }),
     tabJump(cid){
-      console.log(cid)
       wx.navigateTo({
         url:'/pages/tab/main?cid='+cid
       })
     },
     imgJump(siid){
-      if(siid!==1){
-         wx.navigateTo({
-        url:'/pages/special/main?siid=' + siid
-      })
-      }
+       if(siid!==1){
+           if(typeof(siid)==="string"){
+            siid = siid.split("businessId=")[1].split("&")[0]*1
+          }
+          wx.navigateTo({
+         url:'/pages/special/main?siid=' + siid
+       })
+     }
+      
     },
     detJump(pid){
+      if(typeof(pid)==="string"){
+         pid = pid.split("businessId=")[1].split("&")[0]*1
+      }
        wx.navigateTo({
         url:'/pages/detail/main?id=' + pid
       })

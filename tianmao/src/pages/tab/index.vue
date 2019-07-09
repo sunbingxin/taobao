@@ -21,7 +21,7 @@
             <div @click="clickarr('价格')">价格{{i === 0?'👆':'👇'}}</div>
           </div>
           <div class="bottom-bo">
-            <div class="shops" v-for="(item,index) in shopdata" :key="index">
+            <div class="shops" v-for="(item,index) in shopdata" :key="index" @click="clickShow(item.pid)" >
               <div class="shops-img">
                 <img :src="item.mainImgUrl" alt="">
               </div>
@@ -130,6 +130,11 @@ export default {
       }
       this.shop({cid:cid,sortType:1,pageIndex:this.Index})
       this.click(cid)
+    },
+    clickShow(pid){
+      wx.navigateTo({
+        url: '/pages/detail/main?id='+pid,
+      });
     }
   }
 }

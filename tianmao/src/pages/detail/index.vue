@@ -18,13 +18,14 @@
             </div>
             <div class="section">{{getDetail&&getDetail.title}}</div>
             <div class="bao">快递包邮</div>
-            <div class="sectionFoot" >
+            <div class="sectionFoot" @click="clickShopping">
                 <div>
                     <div>选择</div>
                     <div>{{getDefault&&getDefault[0].aname}}</div>
                 </div>
+                <!-- getDefault&&getDefault[0].attributeValueRelationVoList[0].vname -->
                 <div>
-                    <div>{{getDefault&&getDefault[0].attributeValueRelationVoList[0].vname}}</div>
+                    <div>{{shopping}}</div>
                     <img src="/static/images/jt.png" alt="">
                 </div>
             </div>
@@ -50,6 +51,11 @@
 <script>
 import {mapActions,mapState} from "vuex"
 export default {
+    data() {
+        return {
+            shopping:"",
+        }
+    },
     computed: {
         ...mapState({
             getSwiper:state=>{
@@ -73,7 +79,6 @@ export default {
             getImg:state=>{
                 //imgUrl imgWidth imgHeight
                 let arr= state.detail.getAll.getImg===undefined?[]: state.detail.getAll.getImg;
-                console.log(arr);
                 return arr
             }
         })
@@ -84,7 +89,11 @@ export default {
  methods: {
      ...mapActions({
          addDetail:"detail/addDetail"
-     })
+     }),
+     clickShopping(){
+         console.log(this.getDefault[0]);
+         console.log(this.getDetail);
+     }
  },
 }
 </script>
@@ -154,6 +163,7 @@ export default {
     box-sizing: border-box;
     padding: 0px 10prx;
     align-items: center;
+    color:#999da2;
 }
 .sectionFoot>div{
     display: flex;
