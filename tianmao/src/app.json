@@ -2,7 +2,11 @@
   "pages": [
     "pages/index/main",
     "pages/my/main",
-    "pages/tab/main"
+    "pages/tab/main",
+    "pages/cheap/main",
+    "pages/npc/main",
+    "pages/file/main",
+    "pages/address/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

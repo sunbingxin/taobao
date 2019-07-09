@@ -1,18 +1,27 @@
 {
-	"description": "项目配置文件。",
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
 	"setting": {
 		"urlCheck": true,
 		"es6": false,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
-	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
+	"libVersion": "2.7.2",
 	"appid": "touristappid",
 	"projectname": "tianmao",
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
+	"miniprogramRoot": "dist/wx/",
+	"cloudfunctionTemplateRoot": "",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -22,32 +31,37 @@
 			"current": -1,
 			"list": []
 		},
-<<<<<<< HEAD
 		"plugin": {
 			"current": -1,
 			"list": []
 		},
-=======
->>>>>>> dbee1f5c5a50467d798c8ebbd01283117abd6932
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-<<<<<<< HEAD
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
 					"name": "tan",
 					"pathName": "pages/tab/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "cheap",
+					"pathName": "pages/cheap/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "input",
+					"pathName": "pages/file/main",
 					"scene": null
 				}
 			]
-=======
-			"current": -1,
-			"list": []
->>>>>>> dbee1f5c5a50467d798c8ebbd01283117abd6932
 		}
 	}
 }
