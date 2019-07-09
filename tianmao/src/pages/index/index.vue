@@ -12,22 +12,23 @@
     <div class="swiperTab">
       <swiper interval="2000"
        duration="1000" 
+       circular
        indicator-dots="true" 
        indicator-color="rgba(161, 144, 2, .3)" 
        autoplay="true">
         <block v-for="(item,index) in Topimg" :key="index">
           <swiper-item>
-            <img :src="item.imgUrl" alt="" class="slide-image" @click="imgJump(item.siid)">
+            <img :src="item.imgUrl" alt="" class="slide-image" @click="imgJump(item.contentValue)">
           </swiper-item>
         </block>
       </swiper>
     </div>
     <div class="ThressImg">
       <div v-for="(item,index) in TLeft" :key="index" class="left"> 
-        <img :src="item.imgUrl" :style="{width:item.imgWidth / 2 + 'px','height':item.imgHeight / 2 + 'px'}" @click="imgJump(item.siid)">
+        <img :src="item.imgUrl" :style="{width:item.imgWidth / 2 + 'px','height':item.imgHeight / 2 + 'px'}" @click="imgJump(item.contentValue)">
       </div>
       <div class="right">
-        <img v-for="(item,index) in TRight" :key="index" :src="item.imgUrl" :style="{width:item.imgWidth / 2 + 'px','height':item.imgHeight / 2 + 'px'}" @click="imgJump(item.siid)">
+        <img v-for="(item,index) in TRight" :key="index" :src="item.imgUrl" :style="{width:item.imgWidth / 2 + 'px','height':item.imgHeight / 2 + 'px'}" @click="imgJump(item.contentValue)">
       </div>
     </div>
     <div class="content">
@@ -55,7 +56,7 @@
       </div>
       <div class="botCon">
         <div class="botEve" v-for="(item,index) in botlist" :key="index">
-          <div class="botLeft">
+          <div class="botLeft" @click="detJump(item.productVo.pid)">
             <img :src="item.productVo.mainImgUrl" alt="">
           </div>
           <div class="botRight">
@@ -71,7 +72,7 @@
               <img src="../../../static/images/黑卡@2x.png" alt="">
               <span>赚￥{{item.productVo.earnMoney}}</span>
             </div>
-            
+        
           </div>
         </div>
       </div>
@@ -119,8 +120,15 @@ export default {
       })
     },
     imgJump(siid){
-      wx.navigateTo({
+      if(siid!==1){
+         wx.navigateTo({
         url:'/pages/special/main?siid=' + siid
+      })
+      }
+    },
+    detJump(pid){
+       wx.navigateTo({
+        url:'/pages/detail/main?id=' + pid
       })
     }
   },
@@ -188,6 +196,7 @@ export default {
 .swiperTab{
   width: 98%;
   height: 150px;
+  margin-top: 10px;
 }
 .swiperTab img{
   margin-left: 1%;

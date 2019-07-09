@@ -1,12 +1,15 @@
 {
   "pages": [
     "pages/index/main",
+    "pages/special/main",
+    "pages/detail/main",
     "pages/my/main",
     "pages/tab/main",
     "pages/cheap/main",
     "pages/npc/main",
     "pages/file/main",
-    "pages/address/main"
+    "pages/address/main",
+    "pages/ShopList/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
