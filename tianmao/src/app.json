@@ -4,7 +4,8 @@
     "pages/special/main",
     "pages/detail/main",
     "pages/my/main",
-    "pages/tab/main"
+    "pages/tab/main",
+    "pages/shopcar/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

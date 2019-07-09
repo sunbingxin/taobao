@@ -1,6 +1,7 @@
-import {getDetails,getDefaults,getImgs,getAlers,getSearchs,getNeis} from "@/services"
+import {getDetails,getDefaults,getImgs,getAlers,getSearchs,getNeis,addShopCars} from "@/services"
 const state={ //原始数据
   getAll:{},
+  getShop:{},
 };
 const getters={ //派生数据
     
@@ -22,13 +23,21 @@ const actions={ //异步改变
     },
     async getNei({commit},payload){
         let data=await getNeis(payload);
-        console.log(data);
+        return data.result
+    },
+    async addShopCar({commit},payload){
+        let data =await addShopCars(payload);
+        commit("addShopCarss",data.result)
+        return data;
     }
 };
 
 const mutations={// 同步改变
     getAlls(state,payload){
        return state.getAll=payload
+    },
+    addShopCarss(state,payload){
+        return state.getShop=payload
     }
 };
   

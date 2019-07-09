@@ -43,7 +43,7 @@
         </div>
         <div class="foot">
             <button>分享赚{{getDetail&&getDetail.memberDiscountPrice}}</button>
-            <button>立即购买</button>
+            <button @click="buyNow">立即购买</button>
         </div>
       <div class="popout" v-if="choos">
         <div>
@@ -54,8 +54,8 @@
             <div>
                 <img :src="getDefault[0].attributeValueRelationVoList[ind].imgUrl" alt="">
                 <div>
-                    <div>￥9.9</div>
-                    <div>库存:50</div>
+                    <div>￥{{pice}}</div>
+                    <div>库存:{{num}}</div>
                 </div>
             </div>
             <div>
@@ -71,13 +71,13 @@
             <div>
                 <div>数量</div>
                 <div>
-                    <span>-</span><span>1</span><span>+</span>
+                    <span @click="btn(false)" >-</span><span>{{oNum}}</span><span @click="btn(true)">+</span>
                 </div>
             </div>
-            <button>确定</button>
+            <button @click="exitd">确定</button>
         </div>
     </div>
-       
+       <input type="file">
     </div>
 </template>
 
@@ -89,6 +89,11 @@ export default {
             shopping:"",
             choos:false,
             ind:0,
+            pice:"",
+            num:"",
+            oNum:1,
+            pid:"",
+            skuKey:"",
         }
     },
     computed: {
@@ -124,30 +129,64 @@ export default {
  methods: {
      ...mapActions({
          addDetail:"detail/addDetail",
-         getNei:"detail/getNei"
+         getNei:"detail/getNei",
+         addShopCar:"detail/addShopCar"
      }),
      clickLi(ind,val){
          this.ind=ind;
          this.shopping=this.getDefault[0].attributeValueRelationVoList[this.ind].vname;
-
-         this.getNei({
-             pid:val.pid,
-             vids:[val.vid]
-         })
+         this.diaoyong();
      },
      clickShopping(){
          this.choos=true;
          this.shopping=this.getDefault[0].attributeValueRelationVoList[this.ind].vname;
-
-          this.getNei({
-             pid:this.getDefault[0].attributeValueRelationVoList[this.ind].pid,
-             vids:[this.getDefault[0].attributeValueRelationVoList[this.ind].vid]
-         })
-        //  console.log(this.getDetail);
+         this.diaoyong();
+     },
+     btn(choos){
+      if(choos){
+       this.oNum+=1;
+      }else{
+        this.oNum-=1;
+        if(this.oNum<1){
+          this.oNum=1;
+          }
+      }
      },
      exitd(){
           this.choos=false;
      },
+     buyNow(){
+         if(this.oNum && this.pid && this.skuKey ){
+            this.addShopCar({
+                orderChannel:this.oNum,
+                skuPidNums:[{
+                    "pid":this.pid,
+                    "buyNum":this.oNum,
+                    "skuKey":this.skuKey
+                }]
+            }).then(res=>{
+                if(res.res_code===1){
+                    wx.navigateTo({ url: '/pages/shopcar/main' });
+                }
+            })
+         }else{
+             this.choos=true;
+              this.diaoyong();
+         }
+     },
+     diaoyong(){
+       this.getNei({
+             pid:this.getDefault[0].attributeValueRelationVoList[this.ind].pid,
+             vids:[this.getDefault[0].attributeValueRelationVoList[this.ind].vid]
+         }).then(res=>{
+             this.oNum=1
+             res.oNum=this.oNum;
+             this.pice=res.salesPrice;
+             this.num=res.store;
+             this.pid=res.pid;
+             this.skuKey=res.skuKey;
+         })
+     }
  },
 }
 </script>
