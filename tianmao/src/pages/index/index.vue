@@ -12,6 +12,7 @@
     <div class="swiperTab">
       <swiper interval="2000"
        duration="1000" 
+       circular
        indicator-dots="true" 
        indicator-color="rgba(161, 144, 2, .3)" 
        autoplay="true">
@@ -201,6 +202,7 @@ export default {
 .swiperTab{
   width: 98%;
   height: 150px;
+  margin-top: 10px;
 }
 .swiperTab img{
   margin-left: 1%;

@@ -1,18 +1,52 @@
 {
-	"description": "项目配置文件。",
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
 	"setting": {
-		"urlCheck": true,
-		"es6": false,
+		"urlCheck": false,
+		"es6": true,
+		"enhance": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+<<<<<<< HEAD
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
-	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
+	"libVersion": "2.7.2",
 	"appid": "touristappid",
 	"projectname": "tianmao",
+	"miniprogramRoot": "dist/wx/",
+	"cloudfunctionTemplateRoot": "",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
+=======
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.7.3",
+	"appid": "wx6a2f4687369f2bba",
+	"projectname": "miniprogram-test-3",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+>>>>>>> 743f267d54e365a217bd2033cae8ba7a6f6154e5
 	"condition": {
 		"search": {
 			"current": -1,
@@ -28,26 +62,39 @@
 			"list": []
 		},
 =======
->>>>>>> dbee1f5c5a50467d798c8ebbd01283117abd6932
+>>>>>>> 743f267d54e365a217bd2033cae8ba7a6f6154e5
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
 <<<<<<< HEAD
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
 					"name": "tan",
 					"pathName": "pages/tab/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "cheap",
+					"pathName": "pages/cheap/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "input",
+					"pathName": "pages/file/main",
 					"scene": null
 				}
 			]
 =======
 			"current": -1,
 			"list": []
->>>>>>> dbee1f5c5a50467d798c8ebbd01283117abd6932
+>>>>>>> 743f267d54e365a217bd2033cae8ba7a6f6154e5
 		}
 	}
 }

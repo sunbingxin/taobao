@@ -50,7 +50,8 @@ export default {
       Index:1,
       i:0,
       sortType:1,
-      open:true
+      open:true,
+      aid:1
     }
   },
   created(){
@@ -59,6 +60,7 @@ export default {
   onLoad(option){
     if(option.cid){
       this.id = option.cid*1
+      this.aid = option.cid*1
     }
   },
   onShow(){
@@ -106,21 +108,21 @@ export default {
       this.sortType = 1
       if(obj === '综合'){
         this.index = 1;
-         this.shop({cid:this.id,sortType:this.sortType,pageIndex:this.Index})
+         this.shop({cid:this.aid,sortType:this.sortType,pageIndex:this.Index})
       }else if(obj === '最新'){
         this.sortType = 2
         this.Index = 1;
-         this.shop({cid:this.id,sortType:this.sortType,pageIndex:this.Index})
+         this.shop({cid:this.aid,sortType:this.sortType,pageIndex:this.Index})
       }else{
         this.i = this.i
         if(this.i === 0){
           this.sortType = 4
           this.i = 1;
-         this.shop({cid:this.id,sortType:this.sortType,pageIndex:this.Index})
+         this.shop({cid:this.aid,sortType:this.sortType,pageIndex:this.Index})
         }else{
           this.sortType = 3
           this.i = 0;
-          this.shop({cid:this.id,sortType:this.sortType,pageIndex:this.Index})
+          this.shop({cid:this.aid,sortType:this.sortType,pageIndex:this.Index})
         }
       }
     },
@@ -128,6 +130,7 @@ export default {
       if(child){
         this.id = cid
       }
+      this.aid = cid
       this.shop({cid:cid,sortType:1,pageIndex:this.Index})
       this.click(cid)
     },

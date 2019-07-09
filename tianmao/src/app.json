@@ -5,7 +5,12 @@
     "pages/detail/main",
     "pages/my/main",
     "pages/tab/main",
-    "pages/shopcar/main"
+    "pages/shopcar/main",
+    "pages/cheap/main",
+    "pages/npc/main",
+    "pages/file/main",
+    "pages/address/main",
+    "pages/ShopList/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
