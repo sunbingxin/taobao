@@ -1,6 +1,6 @@
 <template>
     <div class="bindBox">
-        <!-- <button>新增收货地址</button> -->
+        <!-- <button>新增收货地址</NOtton> -->
     <button 
     bindtap="handleProxy"
     class="addbtn"
@@ -32,7 +32,7 @@ export default {
     },
     methods:{
         goAddress(){
-           wx.navigateTo({url: './redactAddress/main'})
+           wx.navigateTo({url: '/pages/address/main'})
         }
     },
     created(){

@@ -7,9 +7,11 @@
     "pages/tab/main",
     "pages/seek/main",
     "pages/go2detail/main",
-    "pages/goods/main",
-    "pages/goods/redactAddress/main"
-    
+    "pages/cheap/main",
+    "pages/npc/main",
+    "pages/file/main",
+    "pages/address/main",
+    "pages/btn/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

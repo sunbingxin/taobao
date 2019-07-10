@@ -2,16 +2,16 @@
     <div class="outbox">
         <div class="chagne_add_data">
             <div class="user_change_data">
-                <input class="user_address_data" type="text" placeholder="收货人">
+                <input class="user_address_data" type="text" placeholder="收货人" @input="peo">
                 <span class="user_address_right"><img src="/static/images/lt.svg" alt=""></span>
             </div>
             <div class="user_change_data">
-                <input class="user_address_data" type="text" placeholder="手机号码">
+                <input class="user_address_data" type="text" placeholder="手机号码" @input="pho">
                 <span class="user_address_right user_address_right2"><i>+ 86</i><img src="/static/images/lt.svg" alt=""></span>
             </div>
             <view class="user_change_data">
                 <picker 
-                    bindchange="handleProxy"
+                    @change="handleProxy"
                     class="_picker data-v-549b0e66"
                     custom-item="全部"
                     data-comkey="0"
@@ -28,26 +28,27 @@
                         data-eventid="2"
                         placeholder="所在地区"
                         type="text"
-                        >...</input>
+                        :value="list"
+                        />
                     <label class="_span data-v-549b0e66 user_address_right">...</label>
                  </view>
                </picker>
             </view>
             <div class="user_change_data user_textarea">
-                <textarea placeholder="详细地址：如道路、门牌号、小区、楼栋号、单元 室等"></textarea>
+                <textarea placeholder="详细地址：如道路、门牌号、小区、楼栋号、单元 室等" @input="checkout"></textarea>
             </div>
         </div>
         <div class="user_data_title">
             <div class="user_title_type">
                 <p class="title_type_tit">标签</p>
                 <div class="user_every_type">
-                    <span>9784651</span>
+                    <span v-for="(item,index) in data" :key="index" :class="ind === index?'border':'span'" @click="clickspan(item,index)">{{item}}</span>
                 </div>
             </div>
             <div class="user_default_address">
                 <p class="set_default_address">设为默认地址</p>
                 <switch 
-                    bindtap="handleProxy"
+                    @tap="handleProxys"
                     class="_switch data-v-549b0e66"
                     color="rgba(51,214,197,1)"
                     data-comkey="0"
@@ -59,13 +60,14 @@
                 </switch>
             </div>
         </div>
-        <button class="submit">保存</button>
+        <button class="submit" @click="clickyes">保存</button>
     </div>
 
 </template>
 <script>
+import {mapState,mapActions} from 'vuex'
 export default {
-    props:{
+  props:{
 
     },
     components:{
@@ -73,14 +75,90 @@ export default {
     },
     data(){
         return {
-
+          people:'',
+          phone:'',
+          address:'',
+          list:'',
+          data:['家','公司','学校','其他'],
+          ind:'',
+          item:'',
+          open:1,
+          code:'',
+          lists:''
         }
     },
     computed:{
-
+      ...mapState({
+        address:(state)=>{return state.cheap.address}
+      })
     },
     methods:{
-
+      ...mapActions({
+        addres:'cheap/addres'
+      }),
+      peo(e){
+        this.people = e.target.value
+        console.log(this.people)
+      }, 
+      pho(e){
+        this.phone = e.target.value
+      },
+      handleProxy(e){
+        this.code = e.target.code
+        this.list = e.target.value[0] +'  '+ e.target.value[1]+'  ' + e.target.value[2]
+        this.lists = e.target.value
+      }, 
+      handleProxys(e){
+        if(this.open === 0){
+          this.open = 1
+        }else{
+          this.open = 0
+        }
+      }, 
+      checkout(e){
+        this.address = e.target.value
+      },
+      clickspan(item,index){
+        this.ind = index
+        this.item = item
+      },
+      clickyes(){
+        if(!this.people){
+          wx.showToast({
+            title: '请输入收货人!'
+          })
+        }else if( !/^1([38]\d|5[0-35-9]|7[3678])\d{8}$/.test(this.phone)){
+          wx.showToast({
+            title: '请输入正确号码!'
+          })
+        }else if(!this.list){
+          wx.showToast({
+            title: '请输入地址!'
+          })
+        }else if(!this.address){
+          wx.showToast({
+            title: '请输入详细地址!'
+          })
+        }else if(!this.ind){
+          wx.showToast({
+            title: '请输入地址类型!'
+          })
+        }else{
+          console.log(this.people,this.phone,this.list,this.address,this.address,this.ind+1,this.open)
+          this.addres({
+            people:this.people,
+            phone:this.phone,
+            lists:this.lists,
+            address:this.address,
+            ind:this.ind+1,
+            open:this.open,
+            provinceId:this.code[0],
+            cityId:this.code[1],
+            areaId:this.code[2]
+          })
+          
+        }
+      }    
     },
     created(){
 
@@ -91,6 +169,17 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.border{
+    width: 66px;
+    height: 26px;
+    border-radius:150px;
+    margin: 1px 7px;
+    font-size:15px;
+    line-height: 26px;
+    text-align: center;
+    border:1px solid skyblue;
+    color:skyblue;
+}
     .outbox{
     width: 100%;
     height: 100%;
@@ -178,7 +267,7 @@ picker{
     margin: 0 auto;
     display: flex;
 }
-.user_every_type span{
+.span{
     width: 66px;
     height: 26px;
     border-radius:150px;
@@ -307,3 +396,4 @@ picker{
 }
 
 </style>
+
