@@ -134,12 +134,10 @@ export default {
      }),
      clickLi(ind,val){
          this.ind=ind;
-         this.shopping=this.getDefault[0].attributeValueRelationVoList[this.ind].vname;
          this.diaoyong();
      },
      clickShopping(){
          this.choos=true;
-         this.shopping=this.getDefault[0].attributeValueRelationVoList[this.ind].vname;
          this.diaoyong();
      },
      btn(choos){
@@ -185,9 +183,16 @@ export default {
              this.num=res.store;
              this.pid=res.pid;
              this.skuKey=res.skuKey;
+             this.shopping=res.skuName
          })
      }
  },
+ onUnload(){
+     console.log(123);
+     this.shopping="";
+     this.oNum="";
+     this.ind=0;
+ }
 }
 </script>
 

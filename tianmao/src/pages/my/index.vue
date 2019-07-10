@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="botCon">
-        <div class="botEve">
+        <div class="botEve" @click="myHui" >
           <img src="../../../static/images/yhj.png" alt="">
           <span>我的优惠券</span>
           <span>></span>
@@ -50,7 +50,7 @@
           <span>联系客服</span>
           <span>></span>
         </div>
-        <div class="botEve">
+        <div class="botEve" @click="myShi">
           <img src="../../../static/images/sm.png" alt="">
           <span>实名认证</span>
           <span>></span>
@@ -85,6 +85,12 @@ export default {
       wx.navigateTo({
         url: '/pages/ShopList/main?index=' + ind,
       });
+    },
+    myHui(){
+      wx.navigateTo({ url: '/pages/cheap/main'});
+    },
+     myShi(){
+      wx.navigateTo({ url: '/pages/file/main'});
     }
   },
   onShow(){
