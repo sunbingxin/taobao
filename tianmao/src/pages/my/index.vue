@@ -35,22 +35,22 @@
         </div>
       </div>
       <div class="botCon">
-        <div class="botEve">
+        <div class="botEve" @click="clickcheap" >
           <img src="../../../static/images/yhj.png" alt="">
           <span>我的优惠券</span>
           <span>></span>
         </div>
-        <div class="botEve">
+        <div class="botEve" @click="clickaddress" >
           <img src="../../../static/images/dz.png" alt="">
           <span>收货地址</span>
           <span>></span>
         </div>
-        <div class="botEve">
+        <div class="botEve" @click="clicknpc" >
           <img src="../../../static/images/kf.png" alt="">
           <span>联系客服</span>
           <span>></span>
         </div>
-        <div class="botEve">
+        <div class="botEve" @click="clickfile" >
           <img src="../../../static/images/sm.png" alt="">
           <span>实名认证</span>
           <span>></span>
@@ -81,6 +81,26 @@ export default {
     ...mapActions({
       myInfo:'my/MysInfo'
     }),
+    clickaddress(){
+      wx.navigateTo({
+        url:'/pages/btn/main'
+      })
+    },
+    clickcheap(){
+      wx.navigateTo({
+        url:'/pages/cheap/main'
+      })
+    },
+    clickfile(){
+      wx.navigateTo({
+        url:'/pages/file/main'
+      })
+    },
+    clicknpc(){
+      wx.navigateTo({
+        url:'/pages/npc/main'
+      })
+    },
     shopList(ind){
       wx.navigateTo({
         url: '/pages/ShopList/main?index=' + ind,

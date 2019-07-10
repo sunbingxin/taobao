@@ -53,19 +53,14 @@ export default {
   },
   computed:{
       ...mapState({
-          phone:(state)=>{
-              if(state.cheap.phone.trueName){
-                  
-                  return state.cheap.phone
-              }
-              
-            }
+          phone:(state)=>{return state.cheap.phone}
       }),
       
   },
   methods:{
     ...mapActions({
-        phones:'cheap/phones'
+        phones:'cheap/phones',
+        add:'cheap/addphone'
     }),
     change1(e){
         this.name = e.target.value
@@ -76,6 +71,7 @@ export default {
     },
     clickbtn(){
         console.log(this.name,this.num)
+        this.add({trueName:this.name,idNumber:this.num,idFrontImgUrl:this.srcs,idReverseImgUrl:this.src})
     },
     clickimg(i){
         if(i === '1'){

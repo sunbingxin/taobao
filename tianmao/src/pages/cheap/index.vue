@@ -7,7 +7,7 @@
           <div class="imgs">
               <img src="../../../static/images/暂无.png" alt="">
           </div>
-          <div class="not">暂无优惠卷可以使用哦~</div>
+          <div class="not" v-if="!cheap.result">暂无优惠卷可以使用哦~</div>
       </div>
   </div>
 </template>
@@ -28,16 +28,19 @@ export default {
   },
   computed:{
       ...mapState({
-          
+        list:(state)=>{return state.cheap.cheap}
       })
   },
   methods:{
       ...mapActions({
-
+          cheap:'cheap/cheaps'
       }),
       clicknav(i){
           this.i = i;
       }
+  },
+  onShow(){
+      this.cheap()
   },
   created(){
 

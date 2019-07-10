@@ -9,7 +9,8 @@
     "pages/npc/main",
     "pages/file/main",
     "pages/address/main",
-    "pages/ShopList/main"
+    "pages/ShopList/main",
+    "pages/btn/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

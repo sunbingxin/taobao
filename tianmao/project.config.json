@@ -4,13 +4,11 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
-		"es6": true,
-		"enhance": true,
+		"urlCheck": true,
+		"es6": false,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-<<<<<<< HEAD
 		"autoAudits": false,
 		"checkInvalidKey": true
 	},
@@ -24,29 +22,8 @@
 		"hidedInDevtools": []
 	},
 	"scripts": {},
-=======
-		"coverView": true,
-		"autoAudits": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		}
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.7.3",
-	"appid": "wx6a2f4687369f2bba",
-	"projectname": "miniprogram-test-3",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
->>>>>>> 743f267d54e365a217bd2033cae8ba7a6f6154e5
 	"condition": {
 		"search": {
 			"current": -1,
@@ -56,19 +33,15 @@
 			"current": -1,
 			"list": []
 		},
-<<<<<<< HEAD
 		"plugin": {
 			"current": -1,
 			"list": []
 		},
-=======
->>>>>>> 743f267d54e365a217bd2033cae8ba7a6f6154e5
 		"game": {
 			"list": []
 		},
 		"miniprogram": {
-<<<<<<< HEAD
-			"current": 2,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -88,13 +61,37 @@
 					"id": -1,
 					"name": "input",
 					"pathName": "pages/file/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "npc",
+					"pathName": "pages/npc/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "btn",
+					"pathName": "pages/btn/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "address",
+					"pathName": "pages/address/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "my",
+					"pathName": "pages/my/main",
 					"scene": null
 				}
 			]
-=======
-			"current": -1,
-			"list": []
->>>>>>> 743f267d54e365a217bd2033cae8ba7a6f6154e5
 		}
 	}
 }
