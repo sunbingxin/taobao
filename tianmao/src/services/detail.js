@@ -1,31 +1,21 @@
 import newFly from "@/utils/require.js"
 
 export function getDetails(payload){
-    return newFly.post("/product/info/1.0.0",payload)
+    return newFly.post("/api/open/product/info/1.0.0",payload)
 }
 
 export function getDefaults(payload){
-    return newFly.post("/product/sku/attrs/1.0.0",payload)
+    return newFly.post("/api/open/product/sku/attrs/1.0.0",payload)
 }
 
 export function getImgs(payload){
-    return newFly.post("/product/detailPicture/1.0.0",payload)
+    return newFly.post("/api/open/product/detailPicture/1.0.0",payload)
 }
 
 export function getAlers(payload){
-    return newFly.post("/shipping/templates/info/1.0.0",payload)
+    return newFly.post("/api/open/shipping/templates/info/1.0.0",payload)
 }
 
 export function getSearchs(payload){
-    return newFly.post("/product/coupon/productCouponList/1.0.0",payload)
-}
-
-export function getNeis(payload){
-    payload.vids=JSON.stringify(payload.vids)
-    return newFly.post("/product/sku/query/1",payload)
-}
-
-export function addShopCars(payload){
-    payload.skuPidNums=JSON.stringify(payload.skuPidNums)
-    return newFly.post("/order/prepare/1.0.0",payload)
+    return newFly.post("/api/open/product/coupon/productCouponList/1.0.0",payload)
 }

@@ -1,8 +1,5 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
+	"description": "项目配置文件。",
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
@@ -10,22 +7,8 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-<<<<<<< HEAD
-		"autoAudits": false,
-		"checkInvalidKey": true
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.7.2",
-	"appid": "touristappid",
-	"projectname": "tianmao",
-	"miniprogramRoot": "dist/wx/",
-	"cloudfunctionTemplateRoot": "",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"scripts": {},
-=======
 		"coverView": true,
+		"nodeModules": true,
 		"autoAudits": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
@@ -36,17 +19,12 @@
 			"outputPath": ""
 		}
 	},
+	"miniprogramRoot": "dist/wx/",
 	"compileType": "miniprogram",
-	"libVersion": "2.7.3",
-	"appid": "wx6a2f4687369f2bba",
-	"projectname": "miniprogram-test-3",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
+	"appid": "wx0f76666b3f41842f",
+	"projectname": "tianmao",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
->>>>>>> 743f267d54e365a217bd2033cae8ba7a6f6154e5
 	"condition": {
 		"search": {
 			"current": -1,
@@ -56,45 +34,13 @@
 			"current": -1,
 			"list": []
 		},
-<<<<<<< HEAD
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-=======
->>>>>>> 743f267d54e365a217bd2033cae8ba7a6f6154e5
 		"game": {
+			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-<<<<<<< HEAD
-			"current": 2,
-			"list": [
-				{
-					"id": -1,
-					"name": "tan",
-					"pathName": "pages/tab/main",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "cheap",
-					"pathName": "pages/cheap/main",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "input",
-					"pathName": "pages/file/main",
-					"scene": null
-				}
-			]
-=======
 			"current": -1,
 			"list": []
->>>>>>> 743f267d54e365a217bd2033cae8ba7a6f6154e5
 		}
 	}
 }
