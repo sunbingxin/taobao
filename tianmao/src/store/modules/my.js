@@ -1,7 +1,7 @@
-import {myInfo,order,pendingNum,orderDel} from '@/services';
+import {myInfo,order,pendingNum,orderDel} from '@/services/my.js';
 const moment = require('moment')
 const state={ //原始数据
-    myInfo:'',
+    mmyInfo:'',
     myOrder:'',
     PendNum:0
 };
@@ -47,8 +47,8 @@ const actions={ //异步改变
 
 const mutations={// 同步改变
   info(state,payload){
-    state.myInfo = payload
-    console.log('myInfo',state.myInfo)
+    state.mmyInfo = payload
+    console.log('myInfo',state.mmyInfo)
   },
   myorder(state,payload){
     state.myOrder = payload

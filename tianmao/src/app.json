@@ -5,11 +5,13 @@
     "pages/detail/main",
     "pages/my/main",
     "pages/tab/main",
-    "pages/shopcar/main",
+    "pages/seek/main",
+    "pages/go2detail/main",
     "pages/cheap/main",
     "pages/npc/main",
     "pages/file/main",
     "pages/address/main",
+    "pages/btn/main",
     "pages/ShopList/main"
   ],
   "window": {
@@ -22,7 +24,7 @@
     "color": "#999",
     "backgroundColor": "#fafafa",
     "selectedColor": "#333",
-    "borderStyle": "black",
+    "borderStyle": "white",
 
     "list": [{
       "text": "首页",

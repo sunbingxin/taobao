@@ -36,22 +36,22 @@
         </div>
       </div>
       <div class="botCon">
-        <div class="botEve">
+        <div class="botEve" @click="clickcheap" >
           <img src="../../../static/images/yhj.png" alt="">
           <span>我的优惠券</span>
           <span>></span>
         </div>
-        <div class="botEve">
+        <div class="botEve" @click="clickaddress" >
           <img src="../../../static/images/dz.png" alt="">
           <span>收货地址</span>
           <span>></span>
         </div>
-        <div class="botEve">
+        <div class="botEve" @click="clicknpc" >
           <img src="../../../static/images/kf.png" alt="">
           <span>联系客服</span>
           <span>></span>
         </div>
-        <div class="botEve">
+        <div class="botEve" @click="clickfile" >
           <img src="../../../static/images/sm.png" alt="">
           <span>实名认证</span>
           <span>></span>
@@ -60,7 +60,7 @@
   </div>
 </template>
 <script>
-import {mapActions,mapState} from 'vuex'
+import {mapState,mapActions} from 'vuex'
 export default {
   props:{
 
@@ -75,7 +75,7 @@ export default {
   },
   computed:{
     ...mapState({
-      Info: state => state.my.myInfo,
+      Info: state => state.my.mmyInfo,
       PendNumber:state => state.my.PendNum,
     })
   },
@@ -84,6 +84,26 @@ export default {
       myInfo:'my/MysInfo',
       PendingNum:'my/PendNum'
     }),
+    clickaddress(){
+      wx.navigateTo({
+        url:'/pages/btn/main'
+      })
+    },
+    clickcheap(){
+      wx.navigateTo({
+        url:'/pages/cheap/main'
+      })
+    },
+    clickfile(){
+      wx.navigateTo({
+        url:'/pages/file/main'
+      })
+    },
+    clicknpc(){
+      wx.navigateTo({
+        url:'/pages/npc/main'
+      })
+    },
     shopList(ind){
       wx.navigateTo({
         url: '/pages/ShopList/main?index=' + ind,
@@ -91,7 +111,7 @@ export default {
     }
   },
   onShow(){
-    this.myInfo(),
+    this.myInfo()
     this.PendingNum()
   },
   created(){
@@ -102,7 +122,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style scoped lang="">
 .box{
   width: 100%;
   height: 100%;

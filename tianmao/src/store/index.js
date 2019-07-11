@@ -3,23 +3,23 @@ import Vuex from "vuex";
 import createLogger from "vuex/dist/logger"
 import tab from "./modules/tab.js";
 import home from "./modules/home.js";
-import cheap from './modules/cheap'
 import special from "./modules/special.js";
 import detail from "./modules/detail.js";
-import shopcar from "./modules/shopcar.js";
+import seek from "./modules/seek.js";
 import my from "./modules/my.js";
+import cheap from './modules/cheap.js'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     modules:{
         home,
+        tab,
         special,
         detail,
-        tab,
-        cheap,
+        seek,
         my,
-        shopcar
+        cheap
     },
     plugins:[createLogger()]
 })

@@ -19,13 +19,3 @@ export function getAlers(payload){
 export function getSearchs(payload){
     return newFly.post("/product/coupon/productCouponList/1.0.0",payload)
 }
-
-export function getNeis(payload){
-    payload.vids=JSON.stringify(payload.vids)
-    return newFly.post("/product/sku/query/1",payload)
-}
-
-export function addShopCars(payload){
-    payload.skuPidNums=JSON.stringify(payload.skuPidNums)
-    return newFly.post("/order/prepare/1.0.0",payload)
-}

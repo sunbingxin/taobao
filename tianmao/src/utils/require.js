@@ -1,6 +1,7 @@
 /* eslint-disable */
 import Fly from "flyio/dist/npm/wx"
-
+import store from '../store/index.js'
+console.log(store,1234)
 export let fly = new Fly
 
 //设置超时
