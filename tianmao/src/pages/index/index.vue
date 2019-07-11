@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="topSearch">
-      <input type="text" placeholder="搜索" @click="sousuo">
+      <input type="text" placeholder="搜索">
     </div>
     <div class="topbar">
       <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
@@ -12,6 +12,7 @@
     <div class="swiperTab">
       <swiper interval="2000"
        duration="1000" 
+       circular
        indicator-dots="true" 
        indicator-color="rgba(161, 144, 2, .3)" 
        autoplay="true">
@@ -32,14 +33,14 @@
     </div>
     <div class="content">
       <div class="every" v-for="(item,index) in StoreImg" :key="index">
-        <img :src="item.pictUrl" alt="">
+        <img :src="item.pictUrl" alt="" @click="imgJump(item.jumpUrl)">
         <div class="tit">
           <span>精选好物|</span>
           <span>等你来抢</span>
           <span>更多></span>
         </div>
         <div class="con">
-          <div v-for="(citem,cindex) in item.children.items" :key="cindex" class="eve">
+          <div v-for="(citem,cindex) in item.children.items" :key="cindex" class="eve" @click="detJump(citem.jumpUrl)" >
             <img :src="citem.imgUrl" alt="">
             <p>{{citem.title}}</p>
             <span>￥{{citem.salesPrice}}</span>
@@ -54,8 +55,8 @@
         <span>更多></span>
       </div>
       <div class="botCon">
-        <div class="botEve" v-for="(item,index) in botlist" :key="index">
-          <div class="botLeft" @click="detJump(item.productVo.pid)">
+        <div class="botEve" v-for="(item,index) in botlist" :key="index"  @click="detJump(item.productVo.pid)">
+          <div class="botLeft">
             <img :src="item.productVo.mainImgUrl" alt="">
           </div>
           <div class="botRight">
@@ -113,26 +114,27 @@ export default {
       pareId:'home/parenId'
     }),
     tabJump(cid){
-      console.log(cid)
       wx.navigateTo({
         url:'/pages/tab/main?cid='+cid
       })
     },
     imgJump(siid){
-      if(siid!==1){
-         wx.navigateTo({
-        url:'/pages/special/main?siid=' + siid
-      })
-      }
+       if(siid!==1){
+           if(typeof(siid)==="string"){
+            siid = siid.split("businessId=")[1].split("&")[0]*1
+          }
+          wx.navigateTo({
+         url:'/pages/special/main?siid=' + siid
+       })
+     }
+      
     },
     detJump(pid){
+      if(typeof(pid)==="string"){
+         pid = pid.split("businessId=")[1].split("&")[0]*1
+      }
        wx.navigateTo({
         url:'/pages/detail/main?id=' + pid
-      })
-    },
-    sousuo(){
-        wx.navigateTo({
-        url:'/pages/seek/main'
       })
     }
   },
@@ -200,6 +202,7 @@ export default {
 .swiperTab{
   width: 98%;
   height: 150px;
+  margin-top: 10px;
 }
 .swiperTab img{
   margin-left: 1%;

@@ -83,9 +83,71 @@ export default {
  },
  methods: {
      ...mapActions({
-         addDetail:"detail/addDetail"
-     })
+         addDetail:"detail/addDetail",
+         getNei:"detail/getNei",
+         addShopCar:"detail/addShopCar"
+     }),
+     clickLi(ind,val){
+         this.ind=ind;
+         this.diaoyong();
+     },
+     clickShopping(){
+         this.choos=true;
+         this.diaoyong();
+     },
+     btn(choos){
+      if(choos){
+       this.oNum+=1;
+      }else{
+        this.oNum-=1;
+        if(this.oNum<1){
+          this.oNum=1;
+          }
+      }
+     },
+     exitd(){
+          this.choos=false;
+     },
+     buyNow(){
+         if(this.oNum && this.pid && this.skuKey ){
+            this.addShopCar({
+                orderChannel:this.oNum,
+                skuPidNums:[{
+                    "pid":this.pid,
+                    "buyNum":this.oNum,
+                    "skuKey":this.skuKey
+                }]
+            }).then(res=>{
+                if(res.res_code===1){
+                    wx.navigateTo({ url: '/pages/shopcar/main' });
+                }
+            })
+         }else{
+             this.choos=true;
+              this.diaoyong();
+         }
+     },
+     diaoyong(){
+       this.getNei({
+             pid:this.getDefault[0].attributeValueRelationVoList[this.ind].pid,
+             vids:[this.getDefault[0].attributeValueRelationVoList[this.ind].vid]
+         }).then(res=>{
+             this.oNum=1
+             res.oNum=this.oNum;
+             this.pice=res.salesPrice;
+             this.num=res.store;
+             this.pid=res.pid;
+             this.skuKey=res.skuKey;
+             this.shopping=res.skuName
+         })
+     }
  },
+ onUnload(){
+     console.log(123);
+     this.shopping="";
+     this.oNum="";
+     this.ind=0;
+ }
 }
 </script>
 

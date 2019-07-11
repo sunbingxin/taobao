@@ -6,27 +6,21 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-<<<<<<< HEAD
+		"autoAudits": false,
+		"checkInvalidKey": true
+	},
+	"scripts": {},
 		"coverView": true,
 		"nodeModules": true,
-		"autoAudits": false,
-		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
 	},
-	"miniprogramRoot": "dist/wx/",
-	"compileType": "miniprogram",
-	"appid": "wx0f76666b3f41842f",
-	"projectname": "tianmao",
-=======
-		"autoAudits": false,
-		"checkInvalidKey": true
-	},
+	"autoAudits": false,
+	"checkInvalidKey": true,
 	"compileType": "miniprogram",
 	"libVersion": "2.7.2",
 	"appid": "touristappid",
@@ -36,8 +30,6 @@
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
-	"scripts": {},
->>>>>>> yj
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {
@@ -49,23 +41,15 @@
 			"current": -1,
 			"list": []
 		},
-<<<<<<< HEAD
-=======
 		"plugin": {
 			"current": -1,
 			"list": []
 		},
->>>>>>> yj
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-<<<<<<< HEAD
-			"current": -1,
-			"list": []
-=======
-			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -116,7 +100,6 @@
 					"scene": null
 				}
 			]
->>>>>>> yj
 		}
 	}
 }

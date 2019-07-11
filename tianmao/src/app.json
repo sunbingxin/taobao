@@ -12,12 +12,13 @@
     "pages/file/main",
     "pages/address/main",
     "pages/btn/main",
-    "pages/ShopList/main"
+    "pages/ShopList/main",
+    "pages/buyfail/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "积纳有品",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
