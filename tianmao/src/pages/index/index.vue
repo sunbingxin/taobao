@@ -55,8 +55,8 @@
         <span>更多></span>
       </div>
       <div class="botCon">
-        <div class="botEve" v-for="(item,index) in botlist" :key="index">
-          <div class="botLeft" @click="detJump(item.productVo.pid)">
+        <div class="botEve" v-for="(item,index) in botlist" :key="index"  @click="detJump(item.productVo.pid)">
+          <div class="botLeft">
             <img :src="item.productVo.mainImgUrl" alt="">
           </div>
           <div class="botRight">

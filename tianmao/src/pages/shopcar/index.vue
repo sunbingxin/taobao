@@ -92,7 +92,7 @@ export default {
                     wx.redirectTo({ url: `/pages/buyfail/main?price=${that.getShop.mainOrder.orderAmount}&number=${that.getShop.prepareId}&isok=2` });
                  }
             })
-             }
+        }
          })
      }
  },

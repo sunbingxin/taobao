@@ -4,7 +4,7 @@
             <div>
                 <img src="/static/images/fail.png" alt="">
                 <div>支付失败</div>
-                <div>请在<span>28:30</span>内完成</div>
+                <div>请在<span>28:28</span>内完成</div>
             </div>
             <div>
                 <div>订单总计:</div>
@@ -24,7 +24,7 @@
            <img src="/static/images/true2.png" alt="">
         </div>
 
-         <div>返回商城</div>
+         <div @click="gunindex">返回商城</div>
          <div class="gopayment">去付款</div>
     </div>
 </template>
@@ -39,8 +39,12 @@ export default {
   onLoad(option){
       this.price=option===undefined?wx.getStorageSync('shop'):option.price
       wx.setStorageSync('shop',option);
-      console.log(this.price);
-  }
+  },
+  methods: {
+      gunindex(){
+        wx.redirectTo({ url: '/pages/index/main'});
+      }
+  },
 }
 </script>
 
@@ -108,9 +112,9 @@ page,.box{
     display: flex;
     justify-content: center;
     align-content: center;
-    margin-top: 100rpx;
+    margin-top: 150rpx;
     color:#5d9afc;
-    border-bottom: 1px solid #5d9afc;
+    font-size: 40rpx;
 }
 .gopayment{
     width: 100%;
@@ -120,5 +124,9 @@ page,.box{
     position: fixed;
     left: 0px;
     bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 42rpx;
 }
 </style>

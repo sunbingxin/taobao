@@ -8,3 +8,11 @@ export let myInfo = () =>{
 export let order = params =>{
     return newFly.post('/order/query/1.0.0',params)
 }
+// 订单数量
+export let pendingNum = () =>{
+    return newFly.post('/order/tips/1.0.0')
+}
+// 取消订单
+export let orderDel = params =>{
+    return newFly.post('/order/cancel/order/1.0.0',params)
+}
