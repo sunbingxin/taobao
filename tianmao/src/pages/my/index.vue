@@ -18,6 +18,7 @@
             <div class="con" @click="shopList(1)">
               <img src="../../../static/images/dfk.png" alt="">
               <span>待付款</span>
+              <p class="numDing" v-if="PendNumber.pendingPaymentNumber">{{PendNumber.pendingPaymentNumber}}</p>
             </div>
           </div>
           <div class="eve">
@@ -75,11 +76,13 @@ export default {
   computed:{
     ...mapState({
       Info: state => state.my.myInfo,
+      PendNumber:state => state.my.PendNum,
     })
   },
   methods:{
     ...mapActions({
-      myInfo:'my/MysInfo'
+      myInfo:'my/MysInfo',
+      PendingNum:'my/PendNum'
     }),
     shopList(ind){
       wx.navigateTo({
@@ -88,7 +91,8 @@ export default {
     }
   },
   onShow(){
-    this.myInfo()
+    this.myInfo(),
+    this.PendingNum()
   },
   created(){
 
@@ -178,6 +182,21 @@ export default {
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+.eve div:nth-child(1){
+  position: relative;
+}
+.numDing{
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  display: inline-block;
+  position: absolute;
+  left: 115%;
+  top: -8px;
+  border: 1px solid red;
+  color: red;
+  border-radius: 50%;
 }
 .con img{
   width: 42px;
