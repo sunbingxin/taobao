@@ -8,6 +8,7 @@ import special from "./modules/special.js";
 import detail from "./modules/detail.js";
 import shopcar from "./modules/shopcar.js";
 import my from "./modules/my.js";
+import seek from "./modules/seek.js";
 
 Vue.use(Vuex)
 
@@ -19,7 +20,8 @@ export default new Vuex.Store({
         tab,
         cheap,
         my,
-        shopcar
+        shopcar,
+        seek
     },
     plugins:[createLogger()]
 })

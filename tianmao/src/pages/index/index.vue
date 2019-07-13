@@ -1,7 +1,7 @@
 <template>
   <div class="box">
     <div class="topSearch">
-      <input type="text" placeholder="搜索">
+      <input type="text" placeholder="搜索" @click="search">
     </div>
     <div class="topbar">
       <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
@@ -136,6 +136,9 @@ export default {
        wx.navigateTo({
         url:'/pages/detail/main?id=' + pid
       })
+    },
+    search(){
+      wx.navigateTo({ url: '/pages/seek/main' });
     }
   },
   onLoad(){

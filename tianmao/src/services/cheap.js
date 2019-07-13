@@ -4,7 +4,10 @@ export function cheap(payload){
 }
 export function add(payload){
     return require.post('user/auth/editBase64/1.0.0',{
-        
+        'trueName': payload.trueName,
+        'idNumber': payload.idNumber,
+        'idReverseImgUrl':payload.idReverseImgUrl,
+        'idFrontImgUrl':payload.idFrontImgUrl
     })
 }
 export function phone(payload){
@@ -12,16 +15,16 @@ export function phone(payload){
 }
 export function address(payload){
     return require.post('user/address/addAddress/1.0.0',{
-        'provinceId': 130000,
-        'provinceName': 河北省,
-        'cityId': 130300,
-        'cityName': 秦皇岛市,
-        'areaId': 130304,
-        'areaName': 北戴河区,
-        'address': 12312,
-        'consignee': 打的,
-        'consigneePhone': 18231461015,
-        'addressTag': 2,
-        'state': 0
+        'provinceId': payload.provinceId,
+        'provinceName': payload.lists[0],
+        'cityId': payload.cityId,
+        'cityName': payload.lists[1],
+        'areaId': payload.areaId,
+        'areaName': payload.lists[2],
+        'address': payload.address,
+        'consignee': payload.people,
+        'consigneePhone': payload.phone,
+        'addressTag': payload.ind,
+        'state': payload.open
     })
 }

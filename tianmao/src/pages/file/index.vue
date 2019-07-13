@@ -17,12 +17,10 @@
            </div>
            <div class="flex-img">
                <div @click="clickimg('1')">
-                   <img v-if="!srcs" :src="phone.idFrontImgUrl" alt="">
-                   <img v-else :src="srcs" alt="">
+                   <img v-if="srcs" :src="srcs" alt="">
                </div>
                <div @click="clickimg('2')">
-                   <img v-if="!src" :src="phone.idReverseImgUrl" alt="">
-                   <img v-else :src="src" alt="">
+                   <img v-if="src" :src="src" alt="">
                 </div>
            </div>
            <div class="content">
@@ -53,19 +51,14 @@ export default {
   },
   computed:{
       ...mapState({
-          phone:(state)=>{
-              if(state.cheap.phone.trueName){
-                  
-                  return state.cheap.phone
-              }
-              
-            }
+          phone:(state)=>{return state.cheap.phone}
       }),
       
   },
   methods:{
     ...mapActions({
-        phones:'cheap/phones'
+        phones:'cheap/phones',
+        add:'cheap/addphone'
     }),
     change1(e){
         this.name = e.target.value
@@ -76,6 +69,7 @@ export default {
     },
     clickbtn(){
         console.log(this.name,this.num)
+        this.add({trueName:this.name,idNumber:this.num,idFrontImgUrl:this.srcs,idReverseImgUrl:this.src})
     },
     clickimg(i){
         if(i === '1'){

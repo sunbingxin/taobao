@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-        <div class="head">
+        <div class="head" @click="address">
           <div>
             <div>
                 <div>{{getShop.mainOrder.consignee}}</div>
@@ -94,6 +94,9 @@ export default {
             })
         }
          })
+     },
+     address(){
+         wx.navigateTo({ url: '/pages/btn/main' });
      }
  },
 }

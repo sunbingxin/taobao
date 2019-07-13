@@ -11,7 +11,10 @@
     "pages/file/main",
     "pages/address/main",
     "pages/ShopList/main",
-    "pages/buyfail/main"
+    "pages/buyfail/main",
+    "pages/btn/main",
+    "pages/share/main",
+    "pages/seek/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

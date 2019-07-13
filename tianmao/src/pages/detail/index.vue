@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="foot">
-            <button>分享赚{{getDetail&&getDetail.memberDiscountPrice}}</button>
+            <button @click="sharo">分享赚{{getDetail&&getDetail.memberDiscountPrice}}</button>
             <button @click="buyNow">立即购买</button>
         </div>
       <div class="popout" v-if="choos">
@@ -185,6 +185,15 @@ export default {
              this.skuKey=res.skuKey;
              this.shopping=res.skuName
          })
+     },
+     sharo(){
+      let obj={
+          title:this.getDetail.title,
+          salesPrice:this.getDetail.salesPrice,
+          vipPrice:this.getDetail.vipPrice,
+          img:this.getDetail.mainImgUrl
+      }
+     wx.navigateTo({ url: '/pages/share/main?obj='+ JSON.stringify(obj) });
      }
  },
  onUnload(){
