@@ -9,7 +9,7 @@
 * vuex(数据管理)
 * 小程序登陆权限
 * async
-* axios 
+* flyio
 * swiper-view
 * canvas
 
